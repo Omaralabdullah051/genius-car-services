@@ -33,7 +33,7 @@ const Services = () => {
     }, []);
 
     return (
-        <div>
+        <div id='services'>
             <h1 className='services-title mt-5'>Our Services:{services.length}</h1>
             <p style={{ color: 'red' }}>{error}</p>
             <div className='services-container'>
