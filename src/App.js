@@ -10,7 +10,7 @@ import ServiceDetail from './Pages/ServiceDetail/ServiceDetail';
 import Footer from './Pages/Shared/Footer/Footer';
 import Header from './Pages/Shared/Header/Header';
 import NotFound from './Pages/Shared/NotFound/NotFound';
-import TrackApplicationRenders from './Pages/TrackApplicationRenders/TrackApplicationRenders';
+// import TrackApplicationRenders from './Pages/TrackApplicationRenders/TrackApplicationRenders';
 
 function App() {
   return (
@@ -27,7 +27,7 @@ function App() {
         <Route path='*' element={<NotFound />} />
       </Routes>
       <Footer />
-      <TrackApplicationRenders />
+      {/* <TrackApplicationRenders /> */}
     </div>
   );
 }
