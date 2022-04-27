@@ -6,14 +6,14 @@ const useServices = () => {
     const [error, setError] = useState('');
 
     useEffect(() => {
-        // fetch('http://localhost:5000/service')
+        // fetch('https://radiant-cove-18662.herokuapp.com/service')
         //     .then(res => res.json())
         //     .then(data => setServices(data))
         //     .catch(error => setError(error))
 
         //or
         const xhr = new XMLHttpRequest();
-        xhr.open('GET', 'http://localhost:5000/service');
+        xhr.open('GET', 'https://radiant-cove-18662.herokuapp.com/service');
         xhr.responseType = "json";
         xhr.setRequestHeader('Content-type', 'application/json');
         xhr.send();

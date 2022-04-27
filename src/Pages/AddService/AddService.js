@@ -6,7 +6,7 @@ const AddService = () => {
 
     const onSubmit = data => {
         console.log(data);
-        fetch('http://localhost:5000/service', {
+        fetch('https://radiant-cove-18662.herokuapp.com/service', {
             method: "POST",
             headers: {
                 'Content-type': 'application/json'

@@ -9,6 +9,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import PageTitle from '../../Shared/PageTitle/PageTitle';
 import axios from 'axios';
+import useToken from '../../../hooks/useToken';
 
 const Login = () => {
     const emailRef = useRef('');
@@ -16,6 +17,7 @@ const Login = () => {
     const navigate = useNavigate();
     const [signInWithEmailAndPassword, user, loading, error] = useSignInWithEmailAndPassword(auth);
     const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
+    const [token] = useToken(user);
     const location = useLocation();
     let from = location.state?.from?.pathname || "/";
 
@@ -38,16 +40,13 @@ const Login = () => {
         //but in react we need to use useRef hook to access dom element.
 
         await signInWithEmailAndPassword(email, password);
-        const { data } = await axios.post('http://localhost:5000/login', { email });
-        localStorage.setItem('accessToken', data.accessToken);
-        navigate(from, { replace: true });
     }
 
-    // useEffect(() => {
-    //     if (user) {
-    //         navigate(from, { replace: true });
-    //     }
-    // }, [user, navigate, from]);
+    useEffect(() => {
+        if (token) {
+            navigate(from, { replace: true });
+        }
+    }, [token, navigate, from]);
 
     const resetPassword = async () => {
         const email = emailRef.current.value;

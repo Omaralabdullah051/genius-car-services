@@ -29,6 +29,12 @@ const Checkout = () => {
     //     setUser({ ...user, address: e.target.value });
     // }
 
+    const [userInfo, setUserInfo] = useState({
+        userName: user.displayName,
+        userEmail: user.email,
+        serviceName: service.name
+    })
+
     const handlePlaceOrder = e => {
         e.preventDefault();
         const order = {
@@ -39,7 +45,7 @@ const Checkout = () => {
             phone: e.target.phone.value
         }
 
-        axios.post('http://localhost:5000/order', order)
+        axios.post('https://radiant-cove-18662.herokuapp.com/order', order)
             .then(res => {
                 const { data } = res;
                 if (data.insertedId) {
@@ -53,9 +59,9 @@ const Checkout = () => {
         <div className='w-50 mx-auto'>
             <h2>Please Order: {service.name}</h2>
             <form onSubmit={handlePlaceOrder}>
-                <input className='w-100 mb-2' type="text" value={user.displayName} name="name" id="name" placeholder='Name' required readOnly disabled />
+                <input className='w-100 mb-2' type="text" value={userInfo.userName} name="name" id="name" placeholder='Name' required readOnly disabled />
                 <br />
-                <input className='w-100 mb-2' type="email" value={user.email} name="email" id="email" placeholder='email' required readOnly disabled />
+                <input className='w-100 mb-2' type="email" value={userInfo.userEmail} name="email" id="email" placeholder='email' required readOnly disabled />
                 <br />
                 <input className='w-100 mb-2' type="text" value={service.name} name="service" id="service" placeholder='service' required />
                 <br />
